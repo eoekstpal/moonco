@@ -5,13 +5,13 @@ import router from '@/router';
 const TIMEOUT = 1000 * 60;
 
 const instance = axios.create({
-	baseURL: import.meta.env.VITE_APP_API_URL,
+	baseURL: import.meta.env.VITE_APP_API_URL, // ***변경
 	timeout: TIMEOUT,
 	headers: {
 		'Content-type': 'application/json',
 		'Cache-Control': 'no-cache',
 	},
-	withCredentials: true,
+	withCredentials: true, // ***추가
 });
 
 instance.interceptors.request.use(function (config) {
@@ -35,6 +35,11 @@ instance.interceptors.response.use(
 		return response;
 	},
 	async error => {
+		// ***error.response가 undefined일 때 처리 추가
+		if (!errorRes) {
+			console.error('서버로부터 응답이 없습니다.');
+			return Promise.reject(new Error('서버로부터 응답이 없습니다.'));
+		}
 		const errorRes = error.response;
 		const originalRequest = error.config;
 		store.commit('SET_ERROR_COUNT');
