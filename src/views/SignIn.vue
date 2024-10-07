@@ -53,6 +53,7 @@ const googleSignIn = async () => {
 	const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=email profile`;
 
 	window.location.href = googleAuthUrl;
+	console.log(clientId);
 };
 
 // 인증 코드 처리ㄹ
