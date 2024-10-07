@@ -5,7 +5,6 @@ import router from '@/router';
 const TIMEOUT = 1000 * 60;
 
 const instance = axios.create({
-	baseURL: import.meta.env.VITE_APP_API_URL, // ***변경
 	timeout: TIMEOUT,
 	headers: {
 		'Content-type': 'application/json',
