@@ -55,7 +55,7 @@ const googleSignIn = async () => {
 	window.location.href = googleAuthUrl;
 };
 
-// 인증 코드 처리
+// 인증 코드 처리ㄹ
 const handleCallback = async () => {
 	const urlParams = new URLSearchParams(window.location.search);
 
