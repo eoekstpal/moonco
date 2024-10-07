@@ -35,13 +35,14 @@ instance.interceptors.response.use(
 		return response;
 	},
 	async error => {
+		const errorRes = error.response;
+		const originalRequest = error.config;
+
 		// ***error.response가 undefined일 때 처리 추가
 		if (!errorRes) {
 			console.error('서버로부터 응답이 없습니다.');
 			return Promise.reject(new Error('서버로부터 응답이 없습니다.'));
 		}
-		const errorRes = error.response;
-		const originalRequest = error.config;
 		store.commit('SET_ERROR_COUNT');
 
 		if (
