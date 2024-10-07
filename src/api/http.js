@@ -11,7 +11,6 @@ const instance = axios.create({
 		'Content-type': 'application/json',
 		'Cache-Control': 'no-cache',
 	},
-	withCredentials: true, // ***추가
 });
 
 instance.interceptors.request.use(function (config) {
